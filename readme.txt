@@ -3,7 +3,7 @@ Contributors: LettoBlog, m_uysl
 Tags: metabox,meta box,order,posts metabox,multisite
 Requires at least: 3.0
 Tested up to: 3.6
-Stable tag: trunk
+Stable tag: 1.0
 License: GPLv2 (or later)
 
 Easily change the order of the meta boxes on the posts screen.
