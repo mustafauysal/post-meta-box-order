@@ -1,27 +1,25 @@
 <?php
 /*
 Plugin Name: Post Meta Box Order
-Plugin URI: http://github.com/LettoBlog/post-meta-box-order
+Plugin URI: http://github.com/mustafauysal/post-meta-box-order
 Description: Easily change the order of the meta boxes on the posts screen.
-Author: Mustafa Uysal, LettoBlog
-Version: 1.0
-Author URI: http://lettoblog.com
+Author: Mustafa Uysal, WPHandle
+Version: 2.0
+Author URI: http://wphandle.com
 Network: true
 License: GPLv2 or later
 */
 
 // If you want to force users? set it true
-$force_override = false;
+$force_override = apply_filters( 'post_meta_box_order_force_override', false );
 
-
-//----------------------------------------Config----------------------------------------//
 
 /**
  * Change this if you update the metabox order and want all users to have
  * the new order instead of just new users.
  * Note that this will overwrite the meta boxes order users have
  */
-$posts_widgets_order_hash = '079e54b7679111af34baf06e89439b81';
+$posts_widgets_order_hash = apply_filters('post_meta_box_order_hash','079e54b7679111af34baf06e89439b81');
 
 
 /**
@@ -40,17 +38,19 @@ $posts_widgets_order_hash = '079e54b7679111af34baf06e89439b81';
 
 
 //Left Cloumn
-$posts_widgets_order_left_column[] = 'authordiv';
-$posts_widgets_order_left_column[] = 'postexcerpt';
-$posts_widgets_order_left_column[] = 'commentstatusdiv';
+$left_columns[] = 'authordiv';
+$left_columns[] = 'postexcerpt';
+$left_columns[] = 'commentstatusdiv';
 
 
 //Right Cloumn
-$posts_widgets_order_right_column[] = 'submitdiv';
-$posts_widgets_order_right_column[] = 'categorydiv';
-$posts_widgets_order_right_column[] = 'tagsdiv-post_tag';
-$posts_widgets_order_right_column[] = 'postimagediv';
+$right_columns[] = 'submitdiv';
+$right_columns[] = 'categorydiv';
+$right_columns[] = 'tagsdiv-post_tag';
+$right_columns[] = 'postimagediv';
 
+$posts_widgets_order_left_column = apply_filters( 'post_meta_box_order_left_column', $left_columns );
+$posts_widgets_order_right_column = apply_filters( 'post_meta_box_order_right_column', $right_columns );
 
 add_action('init', 'posts_widgets_order');
 
